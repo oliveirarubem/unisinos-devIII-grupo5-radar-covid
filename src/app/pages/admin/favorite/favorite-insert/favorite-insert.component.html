@@ -9,17 +9,24 @@
         </ion-card-header>
 
         <ion-card-content>
-          <form focusInvalidInput [formGroup]="regionForm" novalidate>
-            <ion-item>
-              <ion-label position="floating">Nome</ion-label>
-              <ion-input
-                      formControlName="regionName"
-                      type="text"
-                      #regionNameInput
-              >
-              </ion-input>
-            </ion-item>
-          </form>
+          <ion-item>
+            <ion-label>Cidades do Brasil</ion-label>
+            <ionic-selectable
+                    [(ngModel)]="region"
+                    itemValueField="id"
+                    itemTextField="nome"
+                    groupValueField="microrregiao.mesorregiao.UF.id" groupTextField="microrregiao.mesorregiao.UF.nome"
+                    [items]="regions"
+                    [canSearch]="true"
+                    (onSearch)="searchRegions($event)"
+                    (onChange)="regionChange($event)"
+            >
+              <ng-template ionicSelectableGroupTemplate let-group="group">
+                {{group.text}}
+              </ng-template>
+            </ionic-selectable>
+          </ion-item>
+
         </ion-card-content>
 
         <ion-row>

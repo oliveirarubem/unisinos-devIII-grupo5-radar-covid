@@ -7,13 +7,13 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'favorite',
         pathMatch: 'full',
       },
       {
-        path: 'home',
+        path: 'report',
         loadChildren: () =>
-          import('./home/home.module').then((m) => m.HomePageModule),
+          import('./report/report.module').then((m) => m.ReportPageModule),
       },
       {
         path: 'favorite',

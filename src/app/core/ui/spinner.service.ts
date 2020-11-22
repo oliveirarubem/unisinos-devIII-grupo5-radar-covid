@@ -34,6 +34,6 @@ export class SpinnerService {
             } else if (!this.loader && !this.loaderLoading) {
                 clearInterval(interval);
             }
-        }, 500);
+        }, 100);
     }
 }

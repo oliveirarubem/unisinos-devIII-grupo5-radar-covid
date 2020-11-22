@@ -9,6 +9,7 @@ import { FavoritePageRoutingModule } from './favorite-routing.module';
 import { FavoritePage } from './favorite.page';
 import { FavoriteListComponent } from './favorite-list/favorite-list.component';
 import { FavoriteInsertComponent } from './favorite-insert/favorite-insert.component';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { FavoriteInsertComponent } from './favorite-insert/favorite-insert.compo
         FormsModule,
         ReactiveFormsModule,
         IonicModule,
-        FavoritePageRoutingModule
+        FavoritePageRoutingModule,
+        IonicSelectableModule
     ],
     declarations: [
         FavoritePage,

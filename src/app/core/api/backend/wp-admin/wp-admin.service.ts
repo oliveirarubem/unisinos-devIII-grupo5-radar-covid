@@ -49,6 +49,11 @@ export class WpAdminGetUsersRequest {
     nom: string;
 }
 
+export class WpAdminDeleteRequest {
+    readonly action = 'delete';
+    id: number;
+}
+
 export interface WpAdminGetUsersResponse {
     id: number;
     name: string;
@@ -63,7 +68,7 @@ export interface WpAdminGetUsersRegionResponse {
 }
 
 export interface WpAdminRegionDataResponse {
-    ibeCode: string;
+    ibeCode: number;
 }
 
 export interface WpAdminCreateRegionResponse {
@@ -73,7 +78,6 @@ export interface WpAdminCreateRegionResponse {
     data: WpAdminRegionDataResponse;
     usr: number;
 }
-
 
 
 export abstract class WpAdminService {
@@ -102,7 +106,11 @@ export abstract class WpAdminService {
 
     abstract getUser(request: WpAdminGetUsersRequest): Observable<User>;
 
+    abstract deleteUser(request: WpAdminDeleteRequest): Observable<void>;
+
     abstract createRegion(request: WpAdminCreateUserRegionRequest): Observable<Region>;
 
     abstract updateRegion(request: WpAdminUpdateUserRegionRequest): Observable<Region>;
+
+    abstract deleteRegion(request: WpAdminDeleteRequest): Observable<void>;
 }

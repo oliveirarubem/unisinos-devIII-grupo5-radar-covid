@@ -8,11 +8,14 @@ import {
     WpAdminCreateUserRegionRequest,
     WpAdminCreateUserRequest,
     WpAdminCreateUserResponse,
+    WpAdminDeleteRequest,
     WpAdminGetUsersRegionResponse,
     WpAdminGetUsersRequest,
     WpAdminGetUsersResponse,
     WpAdminRegionDataResponse,
-    WpAdminService, WpAdminUpdateUserRegionRequest, WpAdminUpdateUserRequest,
+    WpAdminService,
+    WpAdminUpdateUserRegionRequest,
+    WpAdminUpdateUserRequest,
     WpAdminUserDataResponse,
 } from './wp-admin.service';
 import { ApiWpAdminConfService } from '../api-wp-admin.model';
@@ -96,6 +99,11 @@ export class WpAdminPrdService extends WpAdminService {
                    );
     }
 
+    deleteUser(request: WpAdminDeleteRequest): Observable<void> {
+        return this.delete(request);
+    }
+
+
     createRegion(request: WpAdminCreateUserRegionRequest): Observable<Region> {
         return this.httpClient
                    .get<WpAdminCreateRegionResponse>(this.apiConf.getUriConf().wp_admin.create_update, {
@@ -124,7 +132,20 @@ export class WpAdminPrdService extends WpAdminService {
                    );
     }
 
+    deleteRegion(request: WpAdminDeleteRequest): Observable<void> {
+        return this.delete(request);
+    }
 
+    private delete(request: WpAdminDeleteRequest) {
+        return this.httpClient
+                   .get<void>(this.apiConf.getUriConf().wp_admin.delete, {
+                       headers: this.getApiHeaders(),
+                       params: this.extractParamsRequest(request),
+                   })
+                   .pipe(
+                       take(1)
+                   );
+    }
 
     private convertRegion(respReg: WpAdminGetUsersRegionResponse, userId: number) {
         const region: Region = new Region(respReg.id, respReg.name, this.convertRegionData(respReg.data), userId);
@@ -146,4 +167,6 @@ export class WpAdminPrdService extends WpAdminService {
         }
         return regData;
     }
+
+
 }

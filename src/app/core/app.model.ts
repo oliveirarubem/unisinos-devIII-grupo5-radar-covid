@@ -36,10 +36,10 @@ export class User {
 
 
 export class RegionData {
-    constructor(private _ibgeCode: string) {
+    constructor(private _ibgeCode: number) {
     }
 
-    get ibgeCode(): string {
+    get ibgeCode(): number {
         return this._ibgeCode;
     }
 
@@ -79,5 +79,6 @@ export const AppRoutes = {
         list: '/pages/favorite/list',
         create: '/pages/favorite/create',
     },
-    home: '/pages'
+    home: '/pages',
+    report: '/pages/report'
 };

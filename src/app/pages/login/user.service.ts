@@ -46,4 +46,8 @@ export class UserService {
         this.user = null;
         return of(this.isAuthenticated());
     }
+
+    reload(): Observable<boolean> {
+        return this.login(this.user.email);
+    }
 }

@@ -14,11 +14,7 @@ describe('ApiWpAdmin - Cenario 1 - [PRD]', () => {
             imports: [HttpClientModule],
             providers: [
                 {provide: ApiWpAdminConfService, useClass: ApiWpAdminConfPrdTest},
-                {
-                    provide: WpAdminService,
-                    useClass: WpAdminPrdService,
-                    deps: [ApiWpAdminConfService, HttpClient],
-                },
+                {provide: WpAdminService, useClass: WpAdminPrdService, deps: [ApiWpAdminConfService, HttpClient]},
             ],
         });
 

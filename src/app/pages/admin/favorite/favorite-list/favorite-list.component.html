@@ -1,9 +1,13 @@
-  <ion-list>
-    <ion-item button *ngFor="let reg of regions" (click)="goToReport(reg)">
-      <ion-button slot="end" (click)="delete(reg)" >
-        <ion-icon slot="icon-only" name="trash"></ion-icon>
-      </ion-button>
+<ion-list>
+    <ion-item *ngFor="let reg of regions">
 
-      <ion-label>{{reg.name}}</ion-label>
+        <ion-label>{{reg.name}}</ion-label>
+        <ion-button (click)="goToReport(reg)">
+            <ion-icon slot="icon-only" name="stats-chart"></ion-icon>
+        </ion-button>
+
+        <ion-button slot="end" color="danger" (click)="delete(reg)">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
     </ion-item>
-  </ion-list>
+</ion-list>

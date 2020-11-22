@@ -19,12 +19,6 @@ export class AppComponent implements OnInit, OnDestroy {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Home',
-      url: '/pages/home',
-
-      icon: 'home',
-    },
-    {
       title: 'Favoritos',
       url: '/pages/favorite',
       icon: 'heart',
