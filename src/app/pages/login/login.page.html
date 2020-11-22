@@ -1,9 +1,72 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>login</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button color="secondary" (click)="login()">Logar</ion-button>
+
+    <ion-grid >
+        <ion-row>
+            <ion-col size="12">
+
+                <ion-card>
+
+                    <ion-card-header>
+                        <h2>{{getTitle()}}</h2>
+                    </ion-card-header>
+
+                    <ion-card-content>
+                        <form  focusInvalidInput [formGroup]="loginForm" novalidate>
+                            <ion-item>
+                                <ion-label position="floating">E-mail</ion-label>
+                                <ion-input
+                                        formControlName="userEmail"
+                                        type="text"
+                                        #userEmailInput
+                                >
+                                </ion-input>
+                            </ion-item>
+                            <ion-item *ngIf="isRegistration">
+                                <ion-label position="floating">Apelido/Nome</ion-label>
+                                <ion-input
+                                        formControlName="nickName"
+                                        type="text"
+                                        #nickNameInput
+                                >
+                                </ion-input>
+                            </ion-item>
+
+                        </form>
+                    </ion-card-content>
+
+                    <ion-row>
+                        <ion-col size="12" sizeSm="8">
+                            <ion-button
+                                    (click)="login()" [disabled]="loginForm.invalid" expand="block">
+                                Entrar
+                            </ion-button>
+                        </ion-col>
+                        <ion-col size="12" sizeSm="4">
+                            <ion-button
+                                    (click)="clear()"
+                                    color="light"
+                                    expand="block">
+                                Limpar
+                            </ion-button>
+                            <ion-button
+                                    *ngIf="isRegistration"
+                                    (click)="cancel()"
+                                    color="light"
+                                    expand="block">
+                                Cancelar
+                            </ion-button>
+                        </ion-col>
+
+                    </ion-row>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
 </ion-content>

@@ -1,4 +1,4 @@
-export interface ApiUriConf {
+export interface ApiBrasilIoUriConf {
   dataset: {
     covid19: {
       caso_full: string;
@@ -6,14 +6,14 @@ export interface ApiUriConf {
   };
 }
 
-export interface APITotemResponseBase<T> {
+export interface ApiBrasilIoResponseBase<T> {
   count: number;
   next: string;
   previous: string;
   results: T;
 }
 
-export abstract class ApiConfService {
+export abstract class ApiBrasilIoConfService {
   abstract getSearchKeysForUrlAPIIdentification(): string[];
-  abstract getUriConf(): ApiUriConf;
+  abstract getUriConf(): ApiBrasilIoUriConf;
 }

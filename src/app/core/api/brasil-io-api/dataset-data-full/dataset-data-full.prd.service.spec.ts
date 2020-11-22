@@ -5,32 +5,32 @@ import {
   DatasetDataFullService,
   ReportResponse,
 } from './dataset-data-full.service';
-import { ConfPrdTest } from '../api-conf.prd.config';
-import { ApiConfService } from '../api.model';
+import { ApiBrasilIoConfPrdTest } from '../api-brasil-io-conf.prd.config';
+import { ApiBrasilIoConfService } from '../api-brasil-io.model';
 
-describe('BrasilIoApiDataset- Cenario 1 - [PRD]', () => {
-  let estacioService: DatasetDataFullService;
+describe('ApiBrasilIo - Dataset - Cenario 1 - [PRD]', () => {
+  let apiService: DatasetDataFullService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
       providers: [
-        { provide: ApiConfService, useClass: ConfPrdTest },
+        { provide: ApiBrasilIoConfService, useClass: ApiBrasilIoConfPrdTest },
         {
           provide: DatasetDataFullService,
           useClass: DatasetDataFullPrdService,
-          deps: [ApiConfService, HttpClient],
+          deps: [ApiBrasilIoConfService, HttpClient],
         },
       ],
     });
 
-    estacioService = TestBed.get(DatasetDataFullService);
-    expect(estacioService).toBeTruthy();
-    expect(estacioService).not.toBeNull();
+    apiService = TestBed.get(DatasetDataFullService);
+    expect(apiService).toBeTruthy();
+    expect(apiService).not.toBeNull();
   });
 
   it('testa busca', (done) => {
-    estacioService.report({ city: 'Canoas', is_last: 'True' }).subscribe(
+    apiService.report({ city: 'Canoas', is_last: 'True' }).subscribe(
       (token: ReportResponse[]) => {
         expect(token).toBeTruthy();
         done();

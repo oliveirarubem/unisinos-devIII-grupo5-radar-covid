@@ -1,11 +1,11 @@
-import { ApiConfService, ApiUriConf } from './api.model';
+import { ApiBrasilIoConfService, ApiBrasilIoUriConf } from './api-brasil-io.model';
 
-export class ConfPrdTest extends ApiConfService {
+export class ApiBrasilIoConfPrdTest extends ApiBrasilIoConfService {
   getSearchKeysForUrlAPIIdentification(): string[] {
     return ['dsiame.estacio.rj.br:17033/SIAServices/rest'];
   }
 
-  getUriConf(): ApiUriConf {
+  getUriConf(): ApiBrasilIoUriConf {
     const BASE = 'https://api.brasil.io/v1/dataset/covid19';
 
     return {

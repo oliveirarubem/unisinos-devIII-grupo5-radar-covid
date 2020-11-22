@@ -1,0 +1,9 @@
+  <ion-list>
+    <ion-item button *ngFor="let reg of regions" (click)="goToReport(reg)">
+      <ion-button slot="end" (click)="delete(reg)" >
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+
+      <ion-label>{{reg.name}}</ion-label>
+    </ion-item>
+  </ion-list>

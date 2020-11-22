@@ -1,49 +1,54 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
-    <ion-menu
-      contentId="main-content"
-      type="overlay"
-      *ngIf="isLogged() === true"
-    >
-      <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>Radar Covid</ion-list-header>
-          <ion-note>Unisinos - DSIII - Grupo 5</ion-note>
+    <ion-split-pane contentId="main-content">
+        <ion-menu
+                *ngIf="isLogged() === true"
+                contentId="main-content"
+                type="overlay"
+        >
+            <ion-content>
+                <ion-list id="inbox-list">
+                    <ion-list-header>
+                        Radar Covid
+                    </ion-list-header>
+                    <ion-note>Unisinos - DSIII - Grupo 5</ion-note>
+                    <ion-title *ngIf="userService.isAuthenticated() && userService.user?.data?.nomeApelido" size="small"><b>Olá {{userService.user.data.nomeApelido}}</b></ion-title>
+                    <ion-item-divider></ion-item-divider>
 
-          <ion-menu-toggle
-            auto-hide="false"
-            *ngFor="let p of appPages; let i = index"
-          >
-            <ion-item
-              (click)="selectedIndex = i"
-              routerDirection="root"
-              [routerLink]="[p.url]"
-              lines="none"
-              detail="false"
-              [class.selected]="selectedIndex == i"
-            >
-              <ion-icon
-                slot="start"
-                [ios]="p.icon + '-outline'"
-                [md]="p.icon + '-sharp'"
-              ></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
 
-        <ion-list id="labels-list">
-          <ion-item (click)="logout()">
-            <ion-icon
-              slot="start"
-              ios="log-out-outline"
-              md="log-out-sharp"
-            ></ion-icon>
-            <ion-label>Sair</ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
-  </ion-split-pane>
+                    <ion-menu-toggle
+                            *ngFor="let p of appPages; let i = index"
+                            auto-hide="false"
+                    >
+                        <ion-item
+                                (click)="selectedIndex = i"
+                                [class.selected]="selectedIndex == i"
+                                [routerLink]="[p.url]"
+                                detail="false"
+                                lines="none"
+                                routerDirection="root"
+                        >
+                            <ion-icon
+                                    [ios]="p.icon + '-outline'"
+                                    [md]="p.icon + '-sharp'"
+                                    slot="start"
+                            ></ion-icon>
+                            <ion-label>{{ p.title }}</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
+
+                <ion-list id="labels-list">
+                    <ion-item (click)="logout()">
+                        <ion-icon
+                                ios="log-out-outline"
+                                md="log-out-sharp"
+                                slot="start"
+                        ></ion-icon>
+                        <ion-label>Sair</ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-content>
+        </ion-menu>
+        <ion-router-outlet id="main-content"></ion-router-outlet>
+    </ion-split-pane>
 </ion-app>

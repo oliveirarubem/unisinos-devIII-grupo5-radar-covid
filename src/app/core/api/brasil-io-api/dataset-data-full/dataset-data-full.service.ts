@@ -1,6 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ApiConfService } from '../api.model';
+import { ApiBrasilIoConfService } from '../api-brasil-io.model';
 
 export interface DatasetDataFullRequest {
   city: string;
@@ -29,7 +29,7 @@ export interface ReportResponse {
 }
 
 export abstract class DatasetDataFullService {
-  constructor(protected apiConf: ApiConfService) {}
+  constructor(protected apiConf: ApiBrasilIoConfService) {}
 
   protected extractParamsRequest(dataRequest: any): HttpParams {
     let ret = new HttpParams();

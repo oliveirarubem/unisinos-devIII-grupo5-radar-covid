@@ -8,11 +8,11 @@ import {
   ReportResponse,
   DatasetDataFullRequest,
 } from './dataset-data-full.service';
-import { ApiConfService, APITotemResponseBase } from '../api.model';
+import { ApiBrasilIoConfService, ApiBrasilIoResponseBase } from '../api-brasil-io.model';
 
 export class DatasetDataFullPrdService extends DatasetDataFullService {
   constructor(
-    protected apiConf: ApiConfService,
+    protected apiConf: ApiBrasilIoConfService,
     private httpClient: HttpClient,
   ) {
     super(apiConf);
@@ -35,7 +35,7 @@ export class DatasetDataFullPrdService extends DatasetDataFullService {
         })
         .pipe(take(1))
         .subscribe(
-          (res: APITotemResponseBase<ReportResponse[]>) => {
+          (res: ApiBrasilIoResponseBase<ReportResponse[]>) => {
             observer.next(res.results);
             observer.complete();
           },
