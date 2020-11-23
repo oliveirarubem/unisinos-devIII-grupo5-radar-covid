@@ -6,8 +6,8 @@ export class ApiWpAdminConfPrdTest extends ApiWpAdminConfService {
     }
 
     getUriConf(): ApiWpAdminUriConf {
-        const BASE = 'http://127.0.0.1:8888/http://grupo5.rodrigotrindade.com/wp-admin/admin-ajax.php';
-        // const BASE = 'http://grupo5.rodrigotrindade.com/wp-admin/admin-ajax.php';
+        // const BASE = 'http://127.0.0.1:8888/http://grupo5.rodrigotrindade.com/wp-admin/admin-ajax.php';
+        const BASE = 'http://grupo5.rodrigotrindade.com/wp-admin/admin-ajax.php';
         return {
             wp_admin: {
                 create_update: `${BASE}`,
