@@ -146,7 +146,7 @@ export class LoginPage implements OnInit {
         }
     }
 
-    private goToAbout() {
+    goToAbout() {
             this.router.navigateByUrl(AppRoutes.about);
     }
 
