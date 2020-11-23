@@ -11,7 +11,7 @@
                         Radar Covid
                     </h1>
                     <ion-note>Unisinos - DSIII - Grupo 5</ion-note>
-                    <ion-title *ngIf="userService.isAuthenticated() && userService.user?.data?.nomeApelido" size="small"><b>Olá {{userService.user.data.nomeApelido}}</b></ion-title>
+                    <ion-title class="user-nickname" *ngIf="userService.isAuthenticated() && userService.user?.data?.nomeApelido" size="small">Olá <b>{{userService.user.data.nomeApelido}}</b></ion-title>
                 </ion-toolbar>
                 <ion-list id="inbox-list">
                     <ion-menu-toggle
@@ -37,7 +37,10 @@
 
 
                         <ion-item-divider></ion-item-divider>
-                        <ion-item  button (click)="logout()">
+                        <ion-item  button (click)="logout()"
+                                   detail="false"
+                                   lines="none"
+                        >
                             <ion-icon
                                     ios="log-out-outline"
                                     md="log-out-sharp"

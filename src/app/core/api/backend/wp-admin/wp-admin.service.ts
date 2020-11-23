@@ -16,7 +16,7 @@ export class WpAdminCreateUserRequest extends WpAdminCreateUpdateRequestBase<Use
 
 export class WpAdminUpdateUserRequest extends WpAdminCreateUpdateRequestBase<UserData> {
     readonly tip = 3;
-    id: string;
+    id: number;
 }
 
 
@@ -27,7 +27,7 @@ export class WpAdminCreateUserRegionRequest extends WpAdminCreateUpdateRequestBa
 
 export class WpAdminUpdateUserRegionRequest extends WpAdminCreateUpdateRequestBase<UserData> {
     readonly tip = 2;
-    id: string;
+    id: number;
 }
 
 

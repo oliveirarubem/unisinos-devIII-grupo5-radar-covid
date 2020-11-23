@@ -1,12 +1,14 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-title>login</ion-title>
+        <ion-title>RadarCovid </ion-title>
+        <ion-title> <ion-note color="light">Os casos de Covid-19 das suas cidades favoritas</ion-note></ion-title>
+        <ion-title> <ion-note color="medium">Unisinos - DSIII - Grupo 5</ion-note></ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-    <ion-grid >
+    <ion-grid>
         <ion-row>
             <ion-col size="12">
 
@@ -17,22 +19,22 @@
                     </ion-card-header>
 
                     <ion-card-content>
-                        <form  focusInvalidInput [formGroup]="loginForm" novalidate>
+                        <form [formGroup]="loginForm"  novalidate (keydown.enter)="login()">
                             <ion-item>
                                 <ion-label position="floating">E-mail</ion-label>
                                 <ion-input
+                                        #userEmailInput
                                         formControlName="userEmail"
                                         type="text"
-                                        #userEmailInput
                                 >
                                 </ion-input>
                             </ion-item>
                             <ion-item *ngIf="isRegistration">
                                 <ion-label position="floating">Apelido/Nome</ion-label>
                                 <ion-input
+                                        #nickNameInput
                                         formControlName="nickName"
                                         type="text"
-                                        #nickNameInput
                                 >
                                 </ion-input>
                             </ion-item>
@@ -41,28 +43,44 @@
                     </ion-card-content>
 
                     <ion-row>
-                        <ion-col size="12" sizeSm="8">
+                        <ion-col size="12">
                             <ion-button
                                     (click)="login()" [disabled]="loginForm.invalid" expand="block">
                                 Entrar
                             </ion-button>
                         </ion-col>
-                        <ion-col size="12" sizeSm="4">
-                            <ion-button
-                                    (click)="clear()"
-                                    color="light"
-                                    expand="block">
-                                Limpar
-                            </ion-button>
-                            <ion-button
-                                    *ngIf="isRegistration"
-                                    (click)="cancel()"
-                                    color="light"
-                                    expand="block">
-                                Cancelar
-                            </ion-button>
-                        </ion-col>
+                    </ion-row>
+                    <ion-row>
 
+                        <ng-container *ngIf="isRegistration; else mimi">
+                            <ion-col size="12" sizeSm="8">
+                                <ion-button
+                                        (click)="clear()"
+                                        color="light"
+                                        expand="block">
+                                    Limpar
+                                </ion-button>
+                            </ion-col>
+                            <ion-col size="12" sizeSm="4">
+                                <ion-button
+                                        (click)="cancel()"
+                                        color="light"
+                                        expand="block">
+                                    Cancelar
+                                </ion-button>
+                            </ion-col>
+                        </ng-container>
+
+                        <ng-template #mimi>
+                            <ion-col size="12">
+                                <ion-button
+                                        (click)="clear()"
+                                        color="light"
+                                        expand="block">
+                                    Limpar
+                                </ion-button>
+                            </ion-col>
+                        </ng-template>
                     </ion-row>
                 </ion-card>
             </ion-col>

@@ -36,8 +36,8 @@ export class LoginPage implements OnInit, OnDestroy {
     isRegistration = false;
 
 
-    userEmailVal = new FormControl('teste@teste.com.br', Validators.compose([Validators.required, Validators.minLength(10)]));
-    nickNameVal = new FormControl('', Validators.compose([Validators.required, Validators.minLength(10)]));
+    userEmailVal = new FormControl('', Validators.compose([Validators.required, Validators.email, Validators.minLength(10)]));
+    nickNameVal = new FormControl('', Validators.compose([Validators.required]));
 
     constructor(
         public fb: FormBuilder,
@@ -65,41 +65,43 @@ export class LoginPage implements OnInit, OnDestroy {
     }
 
     login() {
-        this.spinnerService.showLoading(this.isRegistration ? STATE.registration.spinner : STATE.identification.spinner);
-        if (this.isRegistration) {
-            this.userService
-                .register(this.loginForm.value.userEmail, this.loginForm.value.nickName)
-                .pipe(
-                    finalize(() => {
-                        this.spinnerService.dismissLoading();
-                    }),
-                    takeUntil(this._uns$)
-                )
-                .subscribe((ret) => {
-                    if (ret === true) {
-                        this.goToHome();
-                    } else {
-                        this.notificationService.showInfo('Não foi possível registrar', 'Não localizamos um registro válido após o registro. Favor efetue o processo novamente.');
-                        this.showRegistration();
-                    }
-                });
-        } else {
-            this.userService
-                .login(this.loginForm.value.userEmail)
-                .pipe(
-                    finalize(() => {
-                        this.spinnerService.dismissLoading();
-                    }),
-                    takeUntil(this._uns$)
-                )
-                .subscribe((ret) => {
-                    if (ret === true) {
-                        this.goToHome();
-                    } else {
-                        this.notificationService.showInfo('Registro não localizado', 'Não localizamos um registro com o e-mail informado. Favor efetue o cadastro.');
-                        this.showRegistration();
-                    }
-                });
+        if (this.loginForm.valid) {
+            this.spinnerService.showLoading(this.isRegistration ? STATE.registration.spinner : STATE.identification.spinner);
+            if (this.isRegistration) {
+                this.userService
+                    .register(this.loginForm.value.userEmail, this.loginForm.value.nickName)
+                    .pipe(
+                        finalize(() => {
+                            this.spinnerService.dismissLoading();
+                        }),
+                        takeUntil(this._uns$)
+                    )
+                    .subscribe((ret) => {
+                        if (ret === true) {
+                            this.goToHome();
+                        } else {
+                            this.notificationService.showInfo('Não foi possível registrar', 'Não localizamos um registro válido após o registro. Favor efetue o processo novamente.');
+                            this.showRegistration();
+                        }
+                    });
+            } else {
+                this.userService
+                    .login(this.loginForm.value.userEmail)
+                    .pipe(
+                        finalize(() => {
+                            this.spinnerService.dismissLoading();
+                        }),
+                        takeUntil(this._uns$)
+                    )
+                    .subscribe((ret) => {
+                        if (ret === true) {
+                            this.goToHome();
+                        } else {
+                            this.notificationService.showInfo('Registro não localizado', 'Não localizamos um registro com o e-mail informado. Favor efetue o cadastro.');
+                            this.showRegistration();
+                        }
+                    });
+            }
         }
 
     }

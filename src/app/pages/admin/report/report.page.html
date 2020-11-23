@@ -10,7 +10,7 @@
 <ion-content class="region-report">
     <ion-card>
         <ion-card-header>
-            <ion-card-subtitle color="primary">Última atualização: {{report.last_available_date}}</ion-card-subtitle>
+            <ion-card-subtitle color="primary">Última atualização: {{report.last_available_date | date: 'dd/MM/yyyy'}}</ion-card-subtitle>
             <ion-card-title>{{report.city}}</ion-card-title>
         </ion-card-header>
 

@@ -3,7 +3,8 @@ ion-menu ion-content {
   --padding-start: none !important;
   --padding-end: none !important;
   --padding-top: none !important;
-  h1{
+
+  h1 {
     padding-left: 10px;
   }
 }
@@ -122,4 +123,8 @@ ion-note {
 
 ion-item.selected {
   --color: var(--ion-color-primary);
+}
+
+.user-nickname {
+  padding-bottom: 15px;
 }
