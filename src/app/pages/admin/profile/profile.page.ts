@@ -13,7 +13,7 @@ import { AppRoutes, User } from '../../../core/app.model';
     templateUrl: './profile.page.html',
     styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage implements OnInit, OnDestroy {
+export class ProfilePage implements OnInit {
     private _uns$: Subject<void> = new Subject<void>();
     userForm: FormGroup;
 
@@ -33,15 +33,15 @@ export class ProfilePage implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.createInitialForm();
-
-        this.user = this.userService.user;
-        this.userForm.controls.userEmail.setValue(this.user.email);
-        this.userForm.controls.nickName.setValue(this.user?.data?.nomeApelido);
     }
 
-    ngOnDestroy(): void {
+    ionViewWillLeave(): void {
         this._uns$.next();
         this._uns$.complete();
+    }
+
+    ionViewWillEnter() {
+        this.loadData();
     }
 
     private createInitialForm() {
@@ -49,6 +49,12 @@ export class ProfilePage implements OnInit, OnDestroy {
             userEmail: this.userEmailVal,
             nickName: this.nickNameVal,
         });
+    }
+
+    private loadData() {
+        this.user = this.userService.user;
+        this.userForm.controls.userEmail.setValue(this.user.email);
+        this.userForm.controls.nickName.setValue(this.user?.data?.nomeApelido);
     }
 
     save() {
@@ -79,6 +85,7 @@ export class ProfilePage implements OnInit, OnDestroy {
     cancel() {
         this.createInitialForm();
         this.clear();
+        this.goToHome();
     }
 
     private goToHome() {
@@ -103,4 +110,5 @@ export class ProfilePage implements OnInit, OnDestroy {
                 this.router.navigateByUrl(AppRoutes.login);
             });
     }
+
 }

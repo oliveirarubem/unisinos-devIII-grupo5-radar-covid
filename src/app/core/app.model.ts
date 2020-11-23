@@ -80,5 +80,7 @@ export const AppRoutes = {
         create: '/pages/favorite/create',
     },
     home: '/pages',
-    report: '/pages/report'
+    profile: '/pages/profile',
+    report: '/pages/report',
+    about: '/about'
 };

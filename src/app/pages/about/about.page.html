@@ -1,10 +1,30 @@
 <ion-header [translucent]="true">
     <ion-toolbar color="primary">
-        <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
+        <ion-buttons slot="start" (click)="goToHome()">
+            <ion-icon
+                    ios="home-outline"
+                    md="home-sharp"
+                    slot="start"
+            ></ion-icon>
         </ion-buttons>
-        <ion-title>about</ion-title>
+        <ion-title>Sobre o RadarCovid</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+    <ion-card>
+        <ion-card-content>
+            <p>Este projeto possui objetivo totalmente acadêmico.</p>
+            <p>Foi confeccionado para atender o objetivo da disciplina Desenvolvimento de Software III da universidade <a  target="_blank" href="http://www.unisinos.br/">Unisinos</a>, no segundo semestre de  2020.</p>
+            <p>O projeto foi elaborado pelos integrantes do Grupo 5. São eles: </p>
+            <ul>
+                <li>Hugo Perazzolo</li>
+                <li>Rodrigo Trindade</li>
+                <li>Rubem Oliveira</li>
+                <li>Vinicius Hoffman</li>
+            </ul>
+            <p>Como fonte de dados sobre a Covid-19, foi utilizado a api <a  target="_blank" href="https://brasil.io/home/">Brasil.io</a>.</p>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

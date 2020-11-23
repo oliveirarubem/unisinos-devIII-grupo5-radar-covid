@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
@@ -26,7 +26,7 @@ const STATE = {
     templateUrl: './login.page.html',
     styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit, OnDestroy {
+export class LoginPage implements OnInit {
     @ViewChild('userEmailInput', {static: false}) userEmailInput: IonInput;
     @ViewChild('nickNameInput', {static: false}) nickNameInput: IonInput;
 
@@ -52,7 +52,10 @@ export class LoginPage implements OnInit, OnDestroy {
         this.createInitialForm();
     }
 
-    ngOnDestroy(): void {
+    ionViewWillEnter() {
+    }
+
+    ionViewWillLeave(): void {
         this._uns$.next();
         this._uns$.complete();
     }
@@ -137,9 +140,15 @@ export class LoginPage implements OnInit, OnDestroy {
 
     private goToHome() {
         if (this.userService.hasRegions()) {
-            this.router.navigateByUrl(AppRoutes.favorite.home);
+            this.router.navigateByUrl(AppRoutes.favorite.home).finally(() => this.clear());
         } else {
             this.router.navigateByUrl(AppRoutes.favorite.create).finally(() => this.clear());
         }
     }
+
+    private goToAbout() {
+            this.router.navigateByUrl(AppRoutes.about);
+    }
+
+
 }

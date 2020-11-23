@@ -18,7 +18,7 @@ import { RegionService } from '../region.service';
     templateUrl: './favorite-insert.component.html',
     styleUrls: ['./favorite-insert.component.scss'],
 })
-export class FavoriteInsertComponent implements OnInit, OnDestroy {
+export class FavoriteInsertComponent implements OnInit {
     @ViewChild('regionName', {static: false}) regionNameInput: IonInput;
     private _uns$: Subject<void> = new Subject<void>();
 
@@ -47,7 +47,7 @@ export class FavoriteInsertComponent implements OnInit, OnDestroy {
         });
     }
 
-    ngOnDestroy(): void {
+    ionViewWillLeave(): void {
         this._uns$.next();
         this._uns$.complete();
     }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppRoutes } from '../../core/app.model';
+import { UserService } from '../login/user.service';
 
 @Component({
     selector: 'app-about',
@@ -7,10 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutPage implements OnInit {
 
-    constructor() {
+    constructor(
+        private router: Router,
+        private userService: UserService
+    ) {
     }
 
     ngOnInit() {
     }
 
+    goToHome() {
+        if (this.userService.hasRegions()) {
+            this.router.navigateByUrl(AppRoutes.favorite.home);
+        } else {
+            this.router.navigateByUrl(AppRoutes.favorite.create);
+        }
+    }
 }

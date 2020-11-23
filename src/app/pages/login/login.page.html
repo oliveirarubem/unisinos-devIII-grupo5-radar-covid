@@ -1,8 +1,16 @@
 <ion-header>
     <ion-toolbar color="primary">
         <ion-title>RadarCovid </ion-title>
-        <ion-title> <ion-note color="light">Os casos de Covid-19 das suas cidades favoritas</ion-note></ion-title>
+        <ion-title> <ion-note color="light">Os casos da Covid-19 das suas cidades favoritas</ion-note></ion-title>
         <ion-title> <ion-note color="medium">Unisinos - DSIII - Grupo 5</ion-note></ion-title>
+
+        <ion-buttons slot="end" (click)="goToAbout()">
+            <ion-icon
+                    ios="alert-circle-outline"
+                    md="alert-circle-sharp"
+                    slot="start"
+            ></ion-icon>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 

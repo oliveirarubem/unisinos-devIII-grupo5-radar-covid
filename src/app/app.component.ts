@@ -26,12 +26,12 @@ export class AppComponent implements OnInit, OnDestroy {
     },
     {
       title: 'Perfil',
-      url: '/pages/profile',
+      url: AppRoutes.profile,
       icon: 'options',
     },
     {
       title: 'Sobre',
-      url: '/pages/about',
+      url: AppRoutes.about,
       icon: 'alert-circle',
     },
   ];
