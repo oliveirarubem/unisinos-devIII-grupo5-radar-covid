@@ -1,0 +1,38 @@
+.region-report {
+  strong {
+    font-size: larger;
+  }
+
+  ion-card-title {
+    font-size: x-large;
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .region-report-detail {
+    //border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .region-report-row {
+    border-radius: 30px;
+    margin-bottom: 15px;
+
+    &.region-report-row-confirmed {
+      border: 1px dotted #f73838;
+    }
+
+    &.region-report-row-death {
+      border: 1px dotted #333030;
+    }
+  }
+
+}
+
+

@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-    <ion-toolbar>
+    <ion-toolbar color="primary">
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
@@ -7,8 +7,70 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    {{report |json}}
+<ion-content class="region-report">
+    <ion-card>
+        <ion-card-header>
+            <ion-card-subtitle color="primary">Última atualização: {{report.last_available_date}}</ion-card-subtitle>
+            <ion-card-title>{{report.city}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col size="8">
+                        População estimada
+                    </ion-col>
+                    <ion-col>
+                        <strong>{{report.estimated_population}}</strong>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row class="region-report-row region-report-row-confirmed">
+                    <ion-col size="2">
+                        <img src="/assets/icon/confirmed.svg">
+                    </ion-col>
+                    <ion-col>
+                        <div class="region-report-detail">
+                            <small>Casos confirmados</small>
+                             <strong>{{report.last_available_confirmed}}</strong>
+                            <small>Casos novos confirmados</small>
+                             <strong>{{report.new_confirmed}}</strong>
+                        </div>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="region-report-row region-report-row-death">
+                    <ion-col size="2">
+                        <img src="/assets/icon/death.svg">
+                    </ion-col>
+                    <ion-col>
+                        <div class="region-report-detail">
+                            <small>Óbitos</small>
+                             <strong>{{report.last_available_deaths}}</strong>
+                            <small>Óbitos novos</small>
+                            <strong>{{report.new_deaths}}</strong>
+                        </div>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col size="8">
+                        Confirmados por 100mil hab.
+                    </ion-col>
+                    <ion-col>
+                        <strong>{{report.last_available_confirmed_per_100k_inhabitants}}</strong>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="8">
+                        Óbitos por caso
+                    </ion-col>
+                    <ion-col>
+                        <strong>{{report.last_available_death_rate}}</strong>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
 
     <ion-fab horizontal="center" vertical="bottom" slot="fixed">
         <ion-fab-button (click)="goToFavorites()">

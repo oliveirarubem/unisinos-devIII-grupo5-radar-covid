@@ -7,6 +7,7 @@ import { UserService } from './pages/login/user.service';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { AppRoutes } from './core/app.model';
 
 @Component({
   selector: 'app-root',
@@ -19,8 +20,8 @@ export class AppComponent implements OnInit, OnDestroy {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Favoritos',
-      url: '/pages/favorite',
+      title: 'Cidades Favoritas',
+      url: AppRoutes.favorite.list,
       icon: 'heart',
     },
     {
@@ -54,12 +55,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const path = window.location.pathname.split('pages/')[1];
-    if (path !== undefined) {
-      this.selectedIndex = this.appPages.findIndex(
-        (page) => page.title.toLowerCase() === path.toLowerCase(),
-      );
-    }
+
   }
 
   ngOnDestroy(): void {

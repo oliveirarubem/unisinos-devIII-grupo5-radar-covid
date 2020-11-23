@@ -1,5 +1,11 @@
 ion-menu ion-content {
   --background: var(--ion-item-background, var(--ion-background-color, #fff));
+  --padding-start: none !important;
+  --padding-end: none !important;
+  --padding-top: none !important;
+  h1{
+    padding-left: 10px;
+  }
 }
 
 ion-menu.md ion-content {
@@ -111,7 +117,7 @@ ion-note {
   display: inline-block;
   font-size: 16px;
 
-  color: var(--ion-color-medium-shade);
+  color: var(--ion-color-primary-contrast);
 }
 
 ion-item.selected {
