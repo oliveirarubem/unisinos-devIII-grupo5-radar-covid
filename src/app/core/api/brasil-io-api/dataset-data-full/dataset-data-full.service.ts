@@ -3,7 +3,8 @@ import { Observable } from 'rxjs';
 import { ApiBrasilIoConfService } from '../api-brasil-io.model';
 
 export class DatasetDataFullRequest {
-    city: string;
+    city?: string;
+    city_ibge_code: number;
     readonly is_last = 'True';
 }
 

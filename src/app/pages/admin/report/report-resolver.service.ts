@@ -28,8 +28,7 @@ export class ReportResolverService implements Resolve<any> {
         if (reg) {
             this.spinnerService.showLoading('Consultando região...');
             const req: DatasetDataFullRequest = new DatasetDataFullRequest();
-            req.city = reg.name;
-            // req.city = 'Canoas';
+            req.city_ibge_code = reg.id;
             return this.datasetDataFullService.report(req)
                        .pipe(
                            finalize(() => this.spinnerService.dismissLoading())

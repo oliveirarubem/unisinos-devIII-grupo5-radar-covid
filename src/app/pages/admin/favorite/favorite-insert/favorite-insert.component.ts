@@ -57,7 +57,8 @@ export class FavoriteInsertComponent implements OnInit {
         component: IonicSelectableComponent,
         value: IbgeRegion
     }) {
-        console.log('region:', event.value);
+        // console.log('region:', event.value);
+        this.region = event.value;
         this.regionForm.controls.regionName.setValue(event.value.nome);
     }
 

@@ -33,7 +33,7 @@ export class WpAdminPrdService extends WpAdminService {
         let ret: HttpHeaders = new HttpHeaders();
         ret = ret.append(
             'Content-Type',
-            'application/json',
+            'application/json; charset=UTF-8',
         );
 
         return ret;
