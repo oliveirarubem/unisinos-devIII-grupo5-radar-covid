@@ -1,0 +1,17 @@
+.ion-no-border {
+  --border-width: 0 0 0px;
+  --border-style: solid;
+  --border-color: var(--ion-color-danger);
+  --background: var(--ion-color-primary);
+}
+
+.subtitle {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  .uni {
+    color: var(--ion-color-medium-tint);
+    font-weight: bold;
+  }
+}
